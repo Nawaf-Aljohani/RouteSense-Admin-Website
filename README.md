@@ -34,3 +34,8 @@ The main objective of this project is to implement the Vehicle Routing Problem (
   - View Collections: Ability to view collections
   - TSP Page: Calculates best order for a collection
   - VRP Page: Calculates best route for multiple collections and assigns drivers
+
+
+### Note
+ - Project slides and poster included
+ - API keys are revoked
