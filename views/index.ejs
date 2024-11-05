@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Home</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+	<header>
+		<ul id="navigation">
+			<li><a id="logo" href="/">Route Sense</a></li>
+
+
+			<% if(isUserLoggedIn){ %>
+				<form action="/logout?_method=DELETE" method="POST">
+					<li> <a id="logout" href="/profile">Profile</a></li>
+					<li> <button id="loginBtn" type="submit">Log out</button></li>
+
+				</form>
+				<% } else{ %>
+					<li> <a id="login" href="/logIn">Log in</a></li>
+					<!-- <li> <a id="signup" href="/SignUp">Sign up</a></li> -->
+					<% } %>
+
+		</ul>
+	</header>
+	<main>
+
+	</main>
+	<hr>
+	<section>
+		<h1 style="	font-family: 'Sora', sans-serif; text-align: center; padding-top: 2rem;">Your route, your rules.</h1>
+
+		<div id="container">
+			
+			<section id="logopic">
+				<div id="textContainer">
+					<h2 style="	font-family: 'Sora', sans-serif;
+					">Route Sense</h2>
+					<p style="	font-family: 'Sora', sans-serif;
+					">Organize your routes and optimize them.
+						Route Sense offers advanced tools to help you organize and optimize your routes, tailored
+						specifically for your
+					    needs. With our application and web portal, you can
+						efficiently plan, track, and manage your routes with ease.
+						Whether you're delivering goods, providing services, or managing
+						transportation logistics, Route Sense allows you to easily streamline
+						your operations, reduce costs, and maximize efficiency.</p>
+				</div>
+				<figure>
+					<img src="IndexPics\logo.png" alt="Route Sense app">
+				</figure>
+			</section>
+		</div>
+		<h1 style="	font-family: 'Sora', sans-serif; text-align: center;
+		"> Features </h1>
+
+		<div class="row">
+			<div class="column">
+				<img src="IndexPics\Screenshot_1710010456.png" alt="signin" style="width:100%">
+				<p style="	font-family: 'Sora', sans-serif";> Login Page</p>
+				<p style="	font-family: 'Sora', sans-serif";>Simple Login page for your delivery drivers!</p>
+
+			</div>
+
+			<div class="column">
+				<img src="IndexPics\Screenshot_1710010448.png" alt="list" style="width:100%">
+				<p style="	font-family: 'Sora', sans-serif;
+				">Delivery list</p>
+				<p style="	font-family: 'Sora', sans-serif";>Easy to use and ordered delivery list!</p>
+
+			</div>
+
+			<div class="column">
+				<img src="IndexPics\Screenshot_1710010443.png" alt="map" style="width:100%">
+				<p style="	font-family: 'Sora', sans-serif;
+				">Map for ease of use</p>
+				<p style="	font-family: 'Sora', sans-serif";>Familiar map interface for the fastest routes!</p>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="column">
+				<img src="IndexPics\Screenshot_1710081987.png" alt="signin" style="width:100%">
+				<p style="	font-family: 'Sora', sans-serif";> Google Maps shortest route</p>
+				<p style="	font-family: 'Sora', sans-serif";> Using Google maps allows the best and shortest routes possible with consideration of traffic.</p>
+
+			</div>
+
+			<div class="column">
+				<img src="IndexPics\Screenshot_1710081997.png" alt="list" style="width:100%">
+				<p style="	font-family: 'Sora', sans-serif;
+				">Directions</p>
+				<p style="	font-family: 'Sora', sans-serif";>Industry standard directions.</p>
+
+			</div>
+
+
+
+			</div>
+
+		</div>
+	</section>
+
+
+
+	<hr>
+
+    <%- include("footer.ejs") %>
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+Latitude,Longitude,Location,Mobile,Name,Order,Status
+40.7128,-74.0060,New York City,1234567890,John Doe,1,pending
+34.0522,-118.2437,Los Angeles,9876543210,Jane Smith,2,completed

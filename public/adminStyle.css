@@ -1,0 +1,353 @@
+#mainContent {
+    margin-top: 4.7rem;
+    margin-left: 21rem;
+    margin-right: 1rem;
+    padding: 1.5rem;
+    background: #f0f0f0;
+    border-radius: 5px;
+
+
+
+}
+
+p {
+    font-size: larger;
+
+}
+
+#firstRow,
+#secondRow,
+#thirdRow,
+#fourthRow,
+#fifthRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+#card1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 20rem;
+    margin: 0 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card1Data,
+#card2Data,
+#card3Data,
+#card4Data {
+    margin-left: 1rem;
+
+}
+
+#card1Icon,
+#card2Icon,
+#card3Icon,
+#card4Icon {
+    display: flex;
+    align-items: center;
+    /* This centers content vertically */
+    justify-content: center;
+    /* This centers content horizontally */
+
+}
+
+#card2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 20rem;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 20rem;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 20rem;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+
+}
+
+#card5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 33rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card6 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 33rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card52 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    width: 20rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card7 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    width: 70rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+.scheduleItems {
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+    border-style: double;
+    border-top: #ffffff;
+    border-left: #ffffff;
+    border-right: #ffffff;
+    border-color: rgb(206, 206, 206);
+
+}
+
+#card8 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    width: 22rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+#card9 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    width: 62rem;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card10 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+
+    width: 30em;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+}
+
+
+#card11 {
+    padding: 5rem 10rem;
+    margin: 1rem 1rem;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+#card12 {
+    padding: 5rem 10rem;
+    margin: 1rem 1rem;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.todoLi {
+    margin-top: 1rem;
+    border-style: solid;
+    border-color: #d5464665;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 5px;
+
+
+}
+
+#toDoinput {
+    margin-top: 2rem;
+    padding: 0.75rem;
+    width: 15rem;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border-style: none;
+    border-color: #ffffff65;
+    border-width: 0;
+
+}
+#chatinput{
+    margin-top: 2rem;
+    padding: 0.75rem;
+    width: 62rem;
+    height: 7rem;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #ff606065;
+    border-width: 1px;
+}
+ul {
+    margin-top: 0px;
+    list-style: none;
+    padding-left: 0px;
+}
+
+#TodoEdit {
+    background-color: #d54646;
+    border: none;
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: large;
+    border-radius: 20px;
+    font-family: 'Sora', sans-serif;
+}
+
+ /* Chat containers */
+ .container {
+    border: 2px solid #dedede;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  /* Darker chat container */
+  .darker {
+    border-color: #ff5656;
+    background-color: #ffffff;
+  }
+  
+  /* Clear floats */
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Style images */
+  .container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  /* Style the right image */
+  .container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  /* Style time text */
+  .time-right {
+    float: right;
+    color: #aaa;
+  }
+  
+  /* Style time text */
+  .time-left {
+    float: left;
+    color: #999;
+  } 

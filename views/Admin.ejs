@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="adminStyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Admin</title>
+</head>
+
+<body>
+    <%- include("adminSideBar.ejs") %>
+
+        <div id="mainContent">
+
+            <div id="firstRow">
+
+                <div id="card1">
+                    <div id="card1Icon">
+                        <span class="material-symbols-outlined">
+                            deployed_code_history
+                        </span>
+                    </div>
+                    <style>
+                        .material-symbols-outlined {
+                            font-size: 7rem;
+                            color: #ff0000;
+                            font-variation-settings:
+                                'FILL' 0,
+                                'wght' 100,
+                                'GRAD' 0,
+                                'opsz' 24
+                        }
+                    </style>
+                    <div id="card1Data">
+                        <p style="margin-top: 3rem;">Pending Orders</p>
+                        <p style="text-align: center;">
+                        
+                        <%= pendingCount %>
+                        
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <div id="card2">
+                    <div id="card2Icon">
+                        <span class="material-symbols-outlined">
+                            disabled_by_default
+                        </span>
+                    </div>
+                    <div id="card2Data">
+                        <p style="margin-top: 3rem;">Cancelled Orders</p>
+                        <p style="text-align: center;">
+                        
+                        <%= cancelledCount %>
+                        
+                        
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+                <div id="card3">
+                    <div id="card3Icon">
+                        <span class="material-symbols-outlined">
+                            assignment_turned_in
+                        </span>
+                    </div>
+                    <div id="card3Data">
+                        <p style="margin-top: 3rem;">Completed Orders</p>
+                        <p style="text-align: center;">
+                        
+                        <%= doneCount %>
+                        
+                        </p>
+                    </div>
+                </div>
+
+                <div id="card4">
+                    <div id="card4Icon">
+                        <span class="material-symbols-outlined">
+                            badge
+                        </span>
+                    </div>
+                    <div id="card4Data">
+                        <p style="margin-top: 3rem;">Current Drivers</p>
+                        <p style="text-align: center;">
+                        
+                            <%= numberOfDrivers %>
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div id="secondRow">
+
+                <div id="card5">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div id="card52">
+                    <p style="text-align: center;">Total Deliveres</p>
+                    <p style="text-align: center; color: #78fd0c;">
+                    
+                    <%= numberOfDeliveries %>
+                    
+                    </p>
+
+
+                    <p style="text-align: center;">Unassigned Drivers</p>
+                    <p style="text-align: center; color: rgb(128, 0, 0);">
+                    
+                    <%= driversWithNoneAssignment %>
+                    
+                    </p>
+
+
+
+                </div>
+                <div id="card6">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+            </div>
+
+            <div id="thirdRow">
+
+                <div id="card7">
+
+
+                    <div style="text-align: center;">
+                        <h4 style="text-align: left; margin-left: 1rem;">Schedule</h4>
+                    </div>
+                    <div class="scheduleItems">09:00 AM | Start</div>
+                    <div class="scheduleItems">10:00 AM | Calculate best routes</div>
+                    <div class="scheduleItems">11:00 AM | Write new documentations</div>
+                    <div class="scheduleItems">12:00 AM | Write new documentations</div>
+                    <div class="scheduleItems">13:00 AM | Import files</div>
+
+                </div>
+
+                <div id="card8">
+
+                    <ul style="font-size: large;"  > <p style="text-align: center;">TO-DO</p> 
+                        <li class="todoLi">
+                            Fix bug in VRP
+                        </li>
+                        <li class="todoLi">
+                            Fix login for app
+                        </li>
+                        <li class="todoLi">
+                            Remove terminated drivers
+                        </li>
+                        <li class="todoLi">
+                            Implement concept car model
+                        </li>
+                        <li class="todoLi">
+                            Enhance Car+
+                        </li>
+                        <li class="todoLi">
+                            <input type="text" id="toDoinput" required="">
+
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+</body>
+
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx1 = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Riyadh', 'Dammam', 'Dahran', 'Khobar', 'Jeddah', 'Madina'],
+            datasets: [{
+                label: 'Planned Drivers per City',
+                data: [10, 4, 7, 2, 3, 3],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 1)',  // Green
+                    'rgba(255, 99, 132, 1)', // Red
+                    'rgba(54, 162, 235, 1)',  // Blue
+                    'rgba(153, 102, 255, 1)',  // Purple
+                    'rgba(255, 206, 86, 1)',  // Yellow
+
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+            datasets: [{
+                label: 'Estimated number of Deliveries',
+                data: [32, 18, 7, 5, 5, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)', // Red
+                    'rgba(54, 162, 235, 1)',  // Blue
+                    'rgba(255, 206, 86, 1)',  // Yellow
+                    'rgba(75, 192, 192, 1)',  // Green
+                    'rgba(153, 102, 255, 1)'  // Purple
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+
+</script>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="../addCollection.css" rel="stylesheet" type="text/css" />
+    <title>Add Collections</title>
+
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../adminSideBar.ejs") %>
+
+        <div id="column">
+            <div id="auto">
+                <h2>Add New Collection with CSV Upload</h2>
+                <p style="margin-bottom: 0rem;" >Collection name will be as same as the file name</p>
+                <form action="/Collections/addCollectionCSV" method="POST" enctype="multipart/form-data"
+                    id="addCollectionForm">
+                    <label for="csvFile">Upload CSV File:</label>
+                    <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+
+                    <button id="addAutoCollection" type="submit">Add Collection</button>
+                </form>
+            </div>
+            <div id="manualy">
+                <h2>Add New Collection with Multiple Documents</h2>
+                <label>Name of collection:</label>
+                <form action="/Collections/addCollection" method="POST" id="addCollectionForm" onsubmit="return validateForm()">
+                    <input id="newCollectionNameInputField" type="text" name="newCollectionName">
+                    <p> (If empty, will add to default collection. Note: can add to existing collection.)</p>
+
+                    <div id="documents-container">
+                        <div class="document">
+                            <table>
+                                <tr>
+                                    <th>Latitude</th>
+                                    <th>Longitude</th>
+                                    <th>Location</th>
+                                    <th>Mobile</th>
+                                    <th>Name</th>
+                                    <th>Order</th>
+                                    <th>Status</th>
+                                    <!-- <th>Time</th> -->
+
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="lat[]" required><span class="error-message" id="lat-error"></span></td>
+                                    <td><input type="text" name="lng[]" required><span class="error-message" id="lng-error"></span></td>
+                                    <td><input type="text" name="location[]" required></td>
+                                    <td><input type="text" name="mobile[]" required><span class="error-message" id="mobile-error"></span></td>
+                                    <td><input type="text" name="name[]" required></td>
+                                    <td><input type="number" name="order[]" value="0"><span class="error-message" id="order-error"></span></td>
+                                    <td>
+                                        <select name="status[]" required>
+                                            <option value="pending">Pending</option>
+                                            <option value="cancelled">Cancelled</option>
+                                            <option value="done">Done</option>
+                                        </select>
+                                        <span class="error-message" id="status-error"></span>
+                                    </td>
+                                    <!-- <td><input type="text" name="time[]" value="8:00"></td> -->
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <button id="addDocRow" type="button" onclick="addDocument()">
+                        <span class="material-symbols-outlined">
+                            add
+                            </span>
+                    </button>
+
+                    <button id="addManualCollection" type="submit">Add Collection</button>
+                </form>
+
+            </div>
+          <!-- 25 max-->
+        </div>
+        <script>
+            let rowCount = 0; // Variable to keep track of the number of rows added
+        
+            function addDocument() { 
+                const documentsContainer = document.getElementById("documents-container");
+        
+                // Check if the limit has been reached
+                if (rowCount >= 24) {
+                    alert("You have reached the maximum limit of 25 rows");
+                    return;
+                }
+        
+                const newDocument = document.createElement("div");
+                newDocument.classList.add("document");
+        
+                newDocument.innerHTML = `<table>
+                                        <tr>
+                                            <td><input type="text" name="lat[]" required><span class="error-message" id="lat-error"></span></td>
+                                            <td><input type="text" name="lng[]" required><span class="error-message" id="lng-error"></span></td>
+                                            <td><input type="text" name="location[]" required></td>
+                                            <td><input type="text" name="mobile[]" required><span class="error-message" id="mobile-error"></span></td>
+                                            <td><input type="text" name="name[]" required></td>
+                                            <td><input type="number" name="order[]" value="0"><span class="error-message" id="order-error"></span></td>
+                                            <td>
+                                                <select name="status[]" required>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="cancelled">Cancelled</option>
+                                                    <option value="done">Done</option>
+                                                </select>
+                                                <span class="error-message" id="status-error"></span>
+                                            </td>
+
+                                        </tr>
+                                    </table>`;
+        
+                documentsContainer.appendChild(newDocument);
+        
+                // Increment the row count
+                rowCount++;
+            }
+
+            function validateForm() {
+                const forms = document.querySelectorAll("#addCollectionForm");
+                let valid = true;
+
+                forms.forEach(form => {
+                    const latitudes = form.querySelectorAll("input[name='lat[]']");
+                    const longitudes = form.querySelectorAll("input[name='lng[]']");
+                    const mobiles = form.querySelectorAll("input[name='mobile[]']");
+                    const orders = form.querySelectorAll("input[name='order[]']");
+                    const statuses = form.querySelectorAll("select[name='status[]']");
+
+                    latitudes.forEach(input => {
+                        if (!isValidLatitude(input.value)) {
+                            valid = false;
+                            input.classList.add("invalid");
+                            document.getElementById("lat-error").textContent = "Invalid latitude (-90 to 90)";
+                        } else {
+                            input.classList.remove("invalid");
+                            document.getElementById("lat-error").textContent = "";
+                        }
+                    });
+
+                    longitudes.forEach(input => {
+                        if (!isValidLongitude(input.value)) {
+                            valid = false;
+                            input.classList.add("invalid");
+                            document.getElementById("lng-error").textContent = "Invalid longitude (-180 to 180)";
+                        } else {
+                            input.classList.remove("invalid");
+                            document.getElementById("lng-error").textContent = "";
+                        }
+                    });
+
+                    // mobiles.forEach(input => {
+                    //     if (!isValidMobile(input.value)) {
+                    //         valid = false;
+                    //         input.classList.add("invalid");
+                    //         document.getElementById("mobile-error").textContent = "Invalid mobile number (Saudi Numbers)";
+                    //     } else {
+                    //         input.classList.remove("invalid");
+                    //         document.getElementById("mobile-error").textContent = "";
+                    //     }
+                    // });
+
+                    orders.forEach(input => {
+                        if (!isValidOrder(input.value)) {
+                            valid = false;
+                            input.classList.add("invalid");
+                            document.getElementById("order-error").textContent = "Invalid order";
+                        } else {
+                            input.classList.remove("invalid");
+                            document.getElementById("order-error").textContent = "";
+                        }
+                    });
+
+                    statuses.forEach(select => {
+                        if (!isValidStatus(select.value)) {
+                            valid = false;
+                            select.classList.add("invalid");
+                            document.getElementById("status-error").textContent = "Please select a status";
+                        } else {
+                            select.classList.remove("invalid");
+                            document.getElementById("status-error").textContent = "";
+                        }
+                    });
+                });
+
+                return valid;
+            }
+
+            function isValidLatitude(lat) {
+                // Latitude should be a number between -90 and 90
+                return !isNaN(lat) && parseFloat(lat) >= -90 && parseFloat(lat) <= 90;
+            }
+
+            function isValidLongitude(lng) {
+                // Longitude should be a number between -180 and 180
+                return !isNaN(lng) && parseFloat(lng) >= -180 && parseFloat(lng) <= 180;
+            }
+
+            // function isValidMobile(mobile) {
+            //     // Mobile number should start with +966, 966, or 05 and should have a total of 10 digits
+            //     return /^(?:(?:\+|00)966)?0?5\d{8}$/.test(mobile);
+            // }
+
+            function isValidOrder(order) {
+                // Order should be a valid number
+                return !isNaN(order);
+            }
+
+            function isValidStatus(status) {
+                // Status should be either pending, cancelled, or done
+                return ['pending', 'cancelled', 'done'].includes(status.toLowerCase());
+            }
+        </script>
+        
+        
+</body>
+
+</html>

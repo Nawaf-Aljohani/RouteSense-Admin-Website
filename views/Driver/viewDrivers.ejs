@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../view_drivers.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <title>View Drivers</title>
+
+
+</head>
+<%- include("../adminSideBar.ejs") %>
+
+<body>
+    <div id="allbookingsdiv">
+        <div id="search-container">
+            <form action="/Driver/searchDrivers" method="GET" id="searchform">
+                <label for="search">Search Drivers:</label>
+                <input type="text" id="search" name="search" placeholder="Enter name, uid or email">
+                <button type="submit" id="searchbutton">Search</button>
+            </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>UID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Vehicle</th>
+                <th>Assignment</th>
+            </tr>
+
+            <% for(var i=0; i < drivers.length; i++) { %>
+                <tr>
+                    <td><%= drivers[i].UID %></td>
+                    <td><%= drivers[i].name %></td>
+                    <td><%= drivers[i].Email %></td>
+                    <td><%= drivers[i].Mobile %></td>
+                    <td><%= drivers[i].car %></td>
+                    <td>
+                        <form action="/driver/assignCollection" method="POST">
+                            <input type="hidden" name="driverId" value="<%= drivers[i].UID %>">
+                            <select name="collection">
+                                <option value="none" <% if (!drivers[i].assignment) { %>selected<% } %>>none</option>
+                                <% documentNames.forEach(function(collection) { %>
+                                    <% if (collection === drivers[i].assignment) { %>
+                                        <option value="<%= collection %>" selected><%= collection %></option>
+                                    <% } else { %>
+                                        <% // Check if collection is already assigned to another driver %>
+                                        <% var assigned = drivers.some(driver => driver.assignment === collection); %>
+                                        <% if (!assigned) { %>
+                                            <option value="<%= collection %>"><%= collection %></option>
+                                        <% } %>
+                                    <% } %>
+                                <% }); %>
+                            </select>
+                            <button id="assignbutton" type="submit">Assign</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form id="deleteForm<%= i %>" action="/removeDriver" method="POST">
+                            <input type="hidden" name="email" value="<%= drivers[i].Email %>">
+                            <button class="fireDriver" id="fireDriver<%= i %>" type="button" onclick="confirmDelete(<%= i %>, '<%= drivers[i].name %>')">
+                                <i style="margin: 0; padding: 0; font-size: 2rem;" class="fa fa-minus-circle" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                        
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+    <script>
+        function confirmDelete(index, name) {
+            if (confirm("Are you sure you want to delete the driver '" + name + "'?\nThis will remove their account and all associated data.")) {
+                document.getElementById("deleteForm" + index).submit();
+            }
+        }
+    </script>
+    
+
+</body>
+
+</html>

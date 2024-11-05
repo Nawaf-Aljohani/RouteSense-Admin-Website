@@ -1,0 +1,83 @@
+#collectionsDiv{
+    padding-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+#search-container {
+    padding-top: 14vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+#columnCollection{
+    margin-left: 4vw;
+    width: 24vw;
+
+}
+
+#search{
+	padding: 0.75rem;
+	margin: 5px 5px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	border: 1px solid #d6d3d3;
+	width: 40%;
+
+}
+#searchCollectionButton {
+    margin-top: 1rem;
+    text-align: center;
+	background-color: #d54646;
+	border: none;
+	color: white;
+	padding: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: large;
+	border-radius: 20px;
+	font-family: 'Sora', sans-serif;
+
+}
+#collectionTableDiv{
+    margin-left: 20rem;
+    padding-top: 10rem;
+
+    
+}
+
+#rowCollection{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+table{
+	border: 1px solid rgb(235, 234, 234);
+
+}
+tr td {
+    border-bottom: 2px solid rgb(216, 216, 216);
+	padding: 0.5rem;
+	text-align: left;
+}
+
+th {
+	text-align: center;
+    padding-right: 8rem;
+    padding-left: 8rem;
+
+}
+
+
+.checkboxCell{
+    text-align: right;
+}

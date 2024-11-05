@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="Login.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+
+	<title>Log in</title>
+</head>
+
+<body>
+	<header>
+		<ul id="navigation">
+			<li><a id="logo" href="/">Route Sense</a></li>
+		</ul>
+	</header>
+
+	<form action="/logIn" method="POST">
+		<div id="signinDiv">
+			<h1>Operator log in</h1>
+			<p>All fields are required.</p>
+			<% if (messages.error) { %>
+				<%= messages.error %>
+			  <% } %>
+			<label>Email</label>
+			<br>
+			<input class="signininput" type="email" id="email" name="email" required value="a@gmail.com">
+			<br>
+			<label>Password</label>
+			<br>
+			<input class="signininput" type='password' id="password" name="password" minlength="8" required value="a@gmail.com">
+			<br>
+			<input type="submit" value="Log in"  >
+
+			<p>For account creation, contact your supervisor.</p>
+		</div>
+
+	</form>
+	<hr>
+
+
+    <%- include("footer.ejs") %>
+
+</body>
+
+</html>

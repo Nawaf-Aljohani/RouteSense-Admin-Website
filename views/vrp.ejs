@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../vrp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <title>VRP</title>
+
+</head>
+
+<body>
+    <%- include("adminSideBar.ejs") %>
+    <div id="rowCollection">
+
+        <div id="columnCollection" st>
+            <div id="search-container">
+                <form action="/vrpCalcualte" method="get" id="searchform">
+                    <button id="searchCollectionButton" type="button" name="action" value="calc">Calculate</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="columnCollection">
+            <div id="collectionsDiv" style="overflow-y: auto; height: 100%;">
+                <h1>Choose Drivers</h1>
+                <table id="collectionsTable">
+                    <% driverNames.forEach(function(name, index) { %>
+                        <tr data-index="<%= index %>">
+                            <td class="collectionName">
+                                <%= name %>
+                            </td>
+
+                            <td class="checkboxCell">
+                                <input type="checkbox" class="driverCheckbox" id="driverCheckbox<%= index %>" name="selectedDriver" value="<%= name %>">
+                                <label for="driverCheckbox<%= index %>"></label>
+                            </td>
+                        </tr>
+                    <% }); %>
+
+                    
+                </table>
+            </div>
+        </div>
+
+
+        <div id="columnCollection">
+            <div id="collectionsDiv" style="overflow-y: auto;">
+                <h1>Choose Collections</h1>
+                <table id="collectionsTable">
+                    <% documentNames.forEach(function(name, index) { %>
+                        <tr data-index="<%= index %>">
+                            <td class="collectionName">
+                                <%= name %>
+                            </td>
+                            <td class="checkboxCell">
+                                <input type="checkbox" id="collectionCheckbox<%= index %>" name="selectedCollection" value="<%= name %>">
+                                <label for="collectionCheckbox<%= index %>"></label>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById("searchCollectionButton").addEventListener("click", function () {
+            // Get all checked driver checkboxes
+            var driverCheckboxes = document.querySelectorAll('.driverCheckbox:checked');
+            var selectedDrivers = [];
+            driverCheckboxes.forEach(function (checkbox) {
+                selectedDrivers.push(checkbox.value);
+            });
+    
+            // Get all checked collection checkboxes
+            var collectionCheckboxes = document.querySelectorAll('[name="selectedCollection"]:checked');
+            var selectedCollections = [];
+            collectionCheckboxes.forEach(function (checkbox) {
+                selectedCollections.push(checkbox.value);
+            });
+    
+            // Check if at least one checkbox is selected for both drivers and collections
+            if (selectedDrivers.length === 0 || selectedCollections.length === 0) {
+                alert("Please select at least one checkbox from both collections and drivers.");
+                return; // Prevent form submission
+            }
+    
+            // Add selected driver and collection values to form data
+            var form = document.getElementById("searchform");
+            selectedDrivers.forEach(function (driver) {
+                var input = document.createElement("input");
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", "selectedDriver");
+                input.setAttribute("value", driver);
+                form.appendChild(input);
+            });
+            selectedCollections.forEach(function (collection) {
+                var input = document.createElement("input");
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", "selectedCollection");
+                input.setAttribute("value", collection);
+                form.appendChild(input);
+            });
+    
+            // Submit the form
+            form.submit();
+        });
+    </script>
+    
+</body>
+
+</html>

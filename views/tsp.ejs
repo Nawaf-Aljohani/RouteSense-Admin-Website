@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../tsp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <title>TSP</title>
+
+</head>
+
+<body>
+    <%- include("adminSideBar.ejs") %>
+        <div id="rowCollection">
+            <div id="columnCollection">
+                <div id="search-container">
+                        <form action="" method="GET" id="searchform">
+                        <input type="text" id="search" name="collectionNameSearch" placeholder="Search...">
+                        <button id="searchCollectionButton" type="submit" name="action" value="calc">Calculate</button>
+                        <button id="searchCollectionButton" type="submit" name="action" value="search">Search</button>
+                    </form>
+
+
+                    <h1 style="text-align: center;">Result:</h1>
+                    <textarea style=" margin-bottom: 2rem; text-align: center; height: 200px;"><%= resultText %></textarea>
+
+                </div>
+                <div id="collectionsDiv" style="overflow-y: auto; height: 50%">
+                    <table id="collectionsTable">
+                        <% documentNames.forEach(function(name, index) { %>
+                            <tr data-index="<%= index %>">
+                                <td class="collectionName">
+
+                                    <%= name %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                            
+                    </table>
+
+
+                </div>
+
+
+            </div>
+            <div id="collectionTableDiv">
+                <h2>Showing Selected Collection Before TSP</h2>
+                <table id="showTableCollection">
+                    <tr>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Location</th>
+                        <th>Mobile</th>
+                        <th>Name</th>
+                        <th>Order</th>
+                        <th>Status</th>
+                    </tr>
+                <% for(var i=0; i < collectionDetailsUnordered.length; i++) { %>
+                    <tr>
+                        <td><%= collectionDetailsUnordered[i].lat %></td>
+                        <td><%= collectionDetailsUnordered[i].lng %></td>
+                        <td><%= collectionDetailsUnordered[i].location %></td>
+                        <td><%= collectionDetailsUnordered[i].mobile %></td>
+                        <td><%= collectionDetailsUnordered[i].name %></td>
+                        <td><%= collectionDetailsUnordered[i].order %></td>
+                        <td><%= collectionDetailsUnordered[i].status %></td>
+                    </tr>
+                <% } %>
+                </table>
+                <h2>Showing Selected Collection After TSP</h2>
+                <table id="showTableCollection">
+                    <tr>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Location</th>
+                        <th>Mobile</th>
+                        <th>Name</th>
+                        <th>Order</th>
+                        <th>Status</th>
+                    </tr>
+                <%
+                collectionDetailsOrdered.sort((a, b) => a.order - b.order);
+
+                for(var i=0; i < collectionDetailsOrdered.length; i++) { %>
+                    <tr>
+                        <td><%= collectionDetailsOrdered[i].lat %></td>
+                        <td><%= collectionDetailsOrdered[i].lng %></td>
+                        <td><%= collectionDetailsOrdered[i].location %></td>
+                        <td><%= collectionDetailsOrdered[i].mobile %></td>
+                        <td><%= collectionDetailsOrdered[i].name %></td>
+                        <td><%= collectionDetailsOrdered[i].order %></td>
+                        <td><%= collectionDetailsOrdered[i].status %></td>
+                    </tr>
+                <% } %>
+                </table>
+            </div>
+
+
+        </div>
+        <script>
+            document.getElementById("searchform").addEventListener("submit", function(event) {
+                var action = event.submitter.getAttribute("value");
+                if (action === "calc") {
+                    this.action = "/tspCalculate";
+                } else if (action === "search") {
+                    this.action = "/Collections/ViewSpecificCollectionTSP";
+                }
+            });
+        </script>
+</body>
+
+
+
+</html>

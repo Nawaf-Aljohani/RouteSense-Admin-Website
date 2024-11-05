@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../addDriver.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <link href="../AdminStyle.css" rel="stylesheet" type="text/css" />
+
+    <title>Remove Collection</title>
+</head>
+
+<body>
+    <%- include("../adminSideBar.ejs") %>
+
+
+
+
+    <div id="addForm" style="padding-left: 10rem;">
+
+        <form style="border: 0px solid rgb(235, 234, 234)" id="addForm" action="/deleteCollection" method="post">
+
+            <p><label for="RoomNumber">Choose a collection to delete from the database permenantly</label></p>
+            <select style="width: 100%;" id="CollectionName" name="CollectionName" required style="width: 50%;">
+                <% collections.forEach(collection => {
+                    if (collection !== 'assignments' && collection !== 'drivers' && collection !=='collectionList'  && collection !=='default'  && collection !=='cars' ) { %>
+                        <option>
+                            <%= collection %>
+                        </option>
+                <% }
+                    }); %>
+            </select>
+            <br>
+            <button id="addBtn" type="submit">Delete Collection</button>
+            <p>This cannot be undone, driver previously assigned to this collection must be assigned a new delivery collection.</p>
+        </form>
+    </div>
+
+
+
+
+    </div>
+
+    </div>
+
+
+</body>
+
+</html>
+</form>

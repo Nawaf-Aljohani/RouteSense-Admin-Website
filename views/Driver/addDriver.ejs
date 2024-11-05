@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../addDriver.css">
+    <title>Add Driver</title>
+
+</head>
+
+<body>
+    <header>
+        <%- include("../adminSideBar.ejs") %>
+    </header>
+
+
+
+    <div id="addForm">
+        <form action="/addDriver" method="post" id="addFormCss">
+            <div  class="elem-group">
+                <label style="text-align: left;" for="room-number">Enter Driver's Name</label>
+                <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+                <br>
+                <input type="text" name="driverName" id="driverName" required style="width: 50%;">
+                
+            </div>
+            <div  class="elem-group">
+                <label style="text-align: left;" for="room-number">Enter Driver's Mobile</label>
+                <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+                <br>
+                <input type="text" name="driverMobile" id="driverMobile" required style="width: 50%;">
+                
+            </div>
+
+
+
+            <div  class="elem-group">
+                <label style="text-align: left;" for="room-number">Enter Driver's Email</label>
+                <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+                <br>
+                <input type="text" name="driverEmail" id="driverEmail" required style="width: 50%;">
+                
+            </div>
+
+            
+            <div class="elem-group">
+                <label for="desc">Enter Password</label> <br>
+                <input type="password" name="driverPass" id="driverPass" required style="width: 50%;">
+
+            </div>
+
+
+
+
+
+
+            
+
+            <div class="elem-group">
+                <button type="submit" id="addBtn">Add Driver</button>
+                <p>Notify driver to change their password as well as to add their car model in the application</p>
+
+
+            </div>
+        </form>
+
+    </div>
+
+
+</body>
+
+</html>

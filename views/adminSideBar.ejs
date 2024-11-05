@@ -1,0 +1,300 @@
+<body>
+    <header class="big-header">
+        <div class="header-content">
+            <h1>Route Sense</h1>
+            <form action="/logout?_method=DELETE" method="POST" class="logout-formAdmin">
+                <button id="logoutButtonAdmin" type="submit">
+                    Log out
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="main-menu">
+        <ul>
+            <li style="text-align: center;">
+                <span style="font-family: 'Sora', sans-serif; font-size: larger; margin-left: 0px ;
+            " class="nav-text">
+                    <b>Welcome Operator</b>
+                </span>
+
+            </li>
+            <li>
+                <a href="/admin">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="/Driver/addDriver">
+                    <i class="fa fa-plus fa-2x"></i>
+                    <span class="nav-text">
+                        Add Drivers
+                    </span>
+                </a>
+
+            </li>
+
+            <li class="has-subnav">
+                <a href="/Driver/viewDrivers">
+                    <i class="fa fa-users fa-2x"></i>
+                    <span class="nav-text">
+                        Driver Managment
+                    </span>
+                </a>
+
+            </li>
+
+            <li>
+                <a href="/Collections/addCollection">
+                    <i class="fa fa-plus-square-o fa-2x"></i>
+                    <span class="nav-text">
+                        Add Collections
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/Collections/removeCollection">
+                    <i class="fa fa-minus-square fa-2x"></i>
+                    <span class="nav-text">
+                        Remove Collections
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/Collections/viewCollection">
+                    <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        View Collections
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/tsp">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        TSP
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/vrp">
+                    <i class="fa fa-share fa-2x"></i>
+                    <span class="nav-text">
+                        VRP
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+
+    </nav>
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            padding: 14px 5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #d54646;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .header-content {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: auto;
+            max-height: auto;
+            margin: 0 0;
+            padding: 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgb(235, 234, 234);
+
+        }
+
+        .logout-formAdmin button {
+            text-align: center;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #logoutButtonAdmin:hover {
+            background-color: rgb(233, 233, 233);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #logoutButtonAdmin {
+            display: block;
+            padding: 14px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: #d54646;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+        }
+
+
+
+
+        /* Font Awesome icon size */
+        .fa-2x {
+            font-size: 2em;
+        }
+
+        /* Styling for icons */
+        .fa {
+            color: #d54646;
+            font-size: 20px;
+            margin-left: 2em;
+            padding-right: 1em;
+        }
+
+        /* Main menu styling */
+        .main-menu {
+            background: #ffffff;
+            border-right: 1px solid #e5e5e5;
+            position: fixed;
+            top: 3.70em;
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            width: 20rem;
+            /* Adjusted width */
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        /* Styling for the list */
+        .main-menu>ul {
+            margin: 7px 0;
+            padding: 0;
+        }
+
+
+
+        /* Styling for list items */
+        .main-menu li {
+            position: relative;
+            padding-top: 10px;
+        }
+
+        /* Styling for links */
+        .main-menu li>a {
+            display: flex;
+            /* Using flexbox */
+            align-items: center;
+            /* Centering vertically */
+            padding: 20px;
+            /* Increased padding for larger clickable area */
+            color: #d54646;
+            font-family: 'Sora', sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.1s linear;
+        }
+
+        /* Styling for text */
+        .main-menu .nav-text {
+            margin-left: 10px;
+            /* Added margin for spacing */
+            color: #d54646;
+            font-family: 'Sora', sans-serif;
+            flex: 1;
+            /* Allows text to take up remaining space */
+        }
+
+        /* Styling for icons */
+        .main-menu .nav-icon {
+            margin-right: 10px;
+            /* Added margin for spacing */
+        }
+
+        /* Styling for logout button */
+        .main-menu>ul.logout {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        /* Scrollable hover */
+        .no-touch .scrollable.hover {
+            overflow-y: hidden;
+        }
+
+        .no-touch .scrollable.hover:hover {
+            overflow-y: auto;
+            overflow: visible;
+        }
+
+        /* Styling for links on hover or focus */
+        a:hover,
+        a:focus {
+            text-decoration: none;
+        }
+
+        /* Styling for navigation */
+        nav {
+            user-select: none;
+            /* Disabling user selection */
+        }
+
+        /* Resetting margins and padding for lists and list items */
+        nav ul,
+        nav li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for links on hover or focus */
+        .main-menu li:hover>a,
+        nav.main-menu li.active>a,
+        .dropdown-menu>li>a:hover,
+        .dropdown-menu>li>a:focus,
+        .dropdown-menu>.active>a,
+        .dropdown-menu>.active>a:hover,
+        .dropdown-menu>.active>a:focus,
+        .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+        .dashboard-page nav.dashboard-menu ul li.active a {
+            color: #fff;
+            background-color: #ffcaca;
+        }
+
+        /* Styling for the area */
+        .area {
+            float: left;
+            background: #ffffff;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
