@@ -14,9 +14,8 @@ The main objective of this project is to implement the Vehicle Routing Problem (
    
 5. Must add [Firebase](https://firebase.google.com/) connection
 6. VRP and TSP files are confidential so their perspective functions are disabled
-7. 
-8. Use the an admin email to log in and sign up other admins
-9. Run node server
+7. Use the an admin email to log in and sign up other admins
+8. Run node server
 
 
 ## Features
